@@ -116,6 +116,7 @@ def test_add_mul_mix_2():
     assert isinstance(y, ad.Node)
     assert np.array_equal(y_val, x1_val + x2_val * x3_val * x4_val)
     assert np.array_equal(grad_x1_val, np.ones_like(x1_val))
+
     assert np.array_equal(grad_x2_val, x3_val * x4_val)
     assert np.array_equal(grad_x3_val, x2_val * x4_val)
     assert np.array_equal(grad_x4_val, x2_val * x3_val)
@@ -189,3 +190,6 @@ def test_matmul_two_vars():
     assert np.array_equal(y_val, expected_yval)
     assert np.array_equal(grad_x2_val, expected_grad_x2_val)
     assert np.array_equal(grad_x3_val, expected_grad_x3_val)
+
+if __name__ == '__main__':
+    test_add_mul_mix_2()
