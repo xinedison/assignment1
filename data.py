@@ -3,15 +3,14 @@ import random
 
 def gen_datas(feature_dim, num_examples):
     true_w = np.random.random(feature_dim)
-    #true_b = np.random.random(1)[0]
-    true_b = 0
+    true_b = np.random.random(1)[0]
     features = np.random.normal(scale=1, size=(num_examples, feature_dim))
     w_x = 0
     for i in range(feature_dim):
         w_x += true_w[i] * features[:, i] 
     labels = w_x + true_b
     labels = 1 / (1+np.exp(-1*labels))
-    #labels += np.random.normal(scale=0.01, size=labels.shape)
+    labels += np.random.normal(scale=0.01, size=labels.shape)
 
     return features, labels, true_w, true_b
 

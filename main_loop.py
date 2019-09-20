@@ -4,7 +4,7 @@ from data import gen_datas, data_iter
 import autodiff as ad
 
 ## get dataset
-feature_dim = 1
+feature_dim = 5
 num_example = 10000
 batch_size = 10
 epoches = 4
@@ -65,6 +65,11 @@ for epoch in range(epoches):
 
 print('learned weight : ', weight_val, ' bias : ', bias_val)
 print('real weight : ', true_w, ' bias : ', true_b)
+
+## check learning is correct
+epsilon = 1e-2
+assert np.max(np.abs(weight_val-true_w)) < epsilon
+assert np.abs(bias_val-true_b) < epsilon
 
 
 
